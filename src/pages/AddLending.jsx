@@ -1,4 +1,3 @@
-import React from 'react';
 import LendingEntryForm from '../components/forms/LendingEntryForm';
 
 const AddLendingPage = () => <LendingEntryForm />;

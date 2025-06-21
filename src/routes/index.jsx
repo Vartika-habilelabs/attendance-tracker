@@ -7,11 +7,11 @@ const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [
-      { index: true, element: <Pages.MajdoorListPage /> },
+      { index: true, element: <Pages.DashboardPage /> },
       { path: 'add-majdoor', element: <Pages.AddMajdoorPage /> },
       { path: 'add-wage', element: <Pages.AddWagePage /> },
       { path: 'add-lending', element: <Pages.AddLendingPage /> },
-      { path: 'dashboard', element: <Pages.DashboardPage /> },
+      // { path: 'dashboard', element: <Pages.DashboardPage /> },
     ],
   },
 ]);

@@ -1,22 +1,20 @@
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { majdoorFormSchema } from '../../constants';
 import {
   Box,
   Card,
   CardContent,
-  TextField,
   Button,
   Typography,
   Grid,
-  Alert,
 } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { useDispatch } from 'react-redux';
 import { addMajdoor } from '../../redux/majdoorSlice';
+import { CustomTextField, CustomDatePicker } from '../common';
 
 const MajdoorForm = () => {
   const dispatch = useDispatch();
@@ -42,85 +40,49 @@ const MajdoorForm = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Box sx={{ maxWidth: 600, mx: 'auto', p: 2 }}>
+      <Box sx={{ maxWidth: 600, p: 2 }}>
         <Card>
           <CardContent>
             <Typography variant="h4" component="h1" gutterBottom align="center">
               Add New Majdoor
             </Typography>
-            
+
             <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
-              <Grid container columns={12} columnSpacing={3} rowSpacing={3}>
+              <Grid sx={{ display: "flex", flexDirection: "column" }} container columns={12} columnSpacing={3} rowSpacing={3}>
                 <Grid gridColumn={{ xs: 'span 12', sm: 'span 6' }}>
-                  <Controller
+                  <CustomTextField
                     name="firstName"
                     control={control}
-                    render={({ field }) => (
-                      <TextField
-                        {...field}
-                        fullWidth
-                        label="First Name"
-                        error={!!errors.firstName}
-                        helperText={errors.firstName?.message}
-                        variant="outlined"
-                      />
-                    )}
+                    label="First Name"
+                    error={errors.firstName}
                   />
                 </Grid>
                 <Grid gridColumn={{ xs: 'span 12', sm: 'span 6' }}>
-                  <Controller
+                  <CustomTextField
                     name="lastName"
                     control={control}
-                    render={({ field }) => (
-                      <TextField
-                        {...field}
-                        fullWidth
-                        label="Last Name"
-                        error={!!errors.lastName}
-                        helperText={errors.lastName?.message}
-                        variant="outlined"
-                      />
-                    )}
+                    label="Last Name"
+                    error={errors.lastName}
                   />
                 </Grid>
                 <Grid gridColumn={{ xs: 'span 12', sm: 'span 6' }}>
-                  <Controller
+                  <CustomDatePicker
                     name="dateOfBirth"
                     control={control}
-                    render={({ field }) => (
-                      <DatePicker
-                        {...field}
-                        label="Date of Birth"
-                        slotProps={{
-                          textField: {
-                            fullWidth: true,
-                            error: !!errors.dateOfBirth,
-                            helperText: errors.dateOfBirth?.message,
-                            variant: 'outlined',
-                          },
-                        }}
-                      />
-                    )}
+                    label="Date of Birth"
+                    error={errors.dateOfBirth}
                   />
                 </Grid>
                 <Grid gridColumn={{ xs: 'span 12', sm: 'span 6' }}>
-                  <Controller
+                  <CustomTextField
                     name="aadharNumber"
                     control={control}
-                    render={({ field }) => (
-                      <TextField
-                        {...field}
-                        fullWidth
-                        label="Aadhar Number"
-                        error={!!errors.aadharNumber}
-                        helperText={errors.aadharNumber?.message}
-                        variant="outlined"
-                        inputProps={{
-                          maxLength: 12,
-                          pattern: '[0-9]*',
-                        }}
-                      />
-                    )}
+                    label="Aadhar Number"
+                    error={errors.aadharNumber}
+                    inputProps={{
+                      maxLength: 12,
+                      pattern: '[0-9]*',
+                    }}
                   />
                 </Grid>
                 <Grid gridColumn="span 12">

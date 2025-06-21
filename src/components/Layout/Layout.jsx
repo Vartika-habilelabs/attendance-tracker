@@ -28,8 +28,8 @@ import { Link, useLocation, Outlet } from 'react-router-dom';
 const drawerWidth = 240;
 
 const menuItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
-  { text: 'Majdoor List', icon: <PeopleIcon />, path: '/' },
+  { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
+  // { text: 'Majdoor List', icon: <PeopleIcon />, path: '/' },
   { text: 'Add Majdoor', icon: <AddIcon />, path: '/add-majdoor' },
   { text: 'Add Wage Entry', icon: <TrendingUpIcon />, path: '/add-wage' },
   { text: 'Add Lending Entry', icon: <TrendingDownIcon />, path: '/add-lending' },
@@ -134,7 +134,7 @@ const Layout = ({ children }) => {
           mt: '64px', // AppBar height
         }}
       >
-        <Container maxWidth="xl">
+        <Container sx={{ maxWidth: 600, p: 2,m:0 }} maxWidth="xl">
           <Outlet />
         </Container>
       </Box>

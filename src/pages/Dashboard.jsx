@@ -9,7 +9,7 @@ const DashboardPage = () => {
   const [selectedMajdoor, setSelectedMajdoor] = useState(null);
 
   return (
-    <Box sx={{ maxWidth: 600, mx: 'auto', p: 2 }}>
+    <Box>
       <Paper sx={{ p: 3, mb: 4 }}>
         <Typography variant="h5" gutterBottom>
           Search Majdoor
